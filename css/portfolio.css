@@ -163,7 +163,25 @@ ul{
    clear: left;
  }
 
+ /*work*/
+ .container{
+   padding: 1% 3% 0 5%;
+ }
+ .container img{
+   width: 15%;
+   float: left;
+ }
+ 
  /*goal*/
  .goal{
    color: #3b2b2b;
  }
+ .big{
+   float: left;
+ }
+ .middle{
+  float: left;
+}
+ .small{
+  float: left;
+}

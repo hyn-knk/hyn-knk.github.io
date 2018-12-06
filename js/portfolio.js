@@ -1,23 +1,5 @@
 $(document).ready(function() {
 
-  // typing animation
-  (function($) {
-    $.fn.writeText = function(content) {
-        var contentArray = content.split(""),
-            current = 0,
-            elem = this;
-        setInterval(function() {
-            if(current < contentArray.length) {
-                elem.text(elem.text() + contentArray[current++]);
-            }
-        }, 80);
-    };
-
-  })(jQuery)
-
-  // initialize wow.js
-  new WOW().init();
-
   // Push the body and the nav over by 285px over
   var main = function() {
     $('.fa-bars').click(function() {
@@ -43,7 +25,6 @@ $(document).ready(function() {
     });
   };
 
-  $(document).ready(main);
 
   // initiate full page scroll
 
@@ -84,23 +65,30 @@ $(document).ready(function() {
     }
   });
 
-
   // move section down one
   $(document).on('click', '#moveDown', function(){
     $.fn.fullpage.moveSectionDown();
   });
 
   // fullpage.js link navigation
-  $(document).on('click', '#skills', function(){
+  $(document).on('click', '#top', function(){
+    $.fn.fullpage.moveTo(1);
+  });
+
+  $(document).on('click', '#about', function(){
     $.fn.fullpage.moveTo(2);
   });
 
-  $(document).on('click', '#projects', function(){
+  $(document).on('click', '#works', function(){
     $.fn.fullpage.moveTo(3);
   });
 
-  $(document).on('click', '#contact', function(){
+  $(document).on('click', '#skill', function(){
     $.fn.fullpage.moveTo(4);
+  });
+
+  $(document).on('click', '#goal', function(){
+    $.fn.fullpage.moveTo(5);
   });
 
   // smooth scrolling
@@ -123,18 +111,15 @@ $(document).ready(function() {
     $('.single-item').slick({
       accessibility: true,
       autoplay: true,
-      autoplaySpeed: 800,
-      dots: true,
+      autoplaySpeed: 900,
+      dots: false,
       fade: true,
     });
   });
-  
+
 
   //ajax form
   $(function() {
-
-    // Get the form.
-    var form = $('#ajax-contact');
 
     // Get the messages div.
     var formMessages = $('#form-messages');
@@ -143,9 +128,6 @@ $(document).ready(function() {
     $(form).submit(function(e) {
       // Stop the browser from submitting the form.
       e.preventDefault();
-
-      // Serialize the form data.
-      var formData = $(form).serialize();
 
       // Submit the form using AJAX.
       $.ajax({
@@ -161,22 +143,13 @@ $(document).ready(function() {
         // Set the message text.
         $(formMessages).text(response);
 
-        // Clear the form.
-        $('#name').val('');
-        $('#email').val('');
-        $('#message').val('');
       })
       .fail(function(data) {
         // Make sure that the formMessages div has the 'error' class.
         $(formMessages).removeClass('success');
         $(formMessages).addClass('error');
 
-        // Set the message text.
-        if (data.responseText !== '') {
-          $(formMessages).text(data.responseText);
-        } else {
-          $(formMessages).text('Oops! An error occured and your message could not be sent.');
-        }
+     
       });
 
     });
