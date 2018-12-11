@@ -1,0 +1,37 @@
+html{
+  min-height: 100%;
+}
+h1{
+  position: relative;
+  text-align: center;
+  margin-top:20%; 
+}
+div#calendar{
+  height:100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+  width: 300px;
+  text-align: center;
+  font-size: 20px;
+  font-family:ヒヒラギノ角ゴ StdN W8;
+  font-weight:bold;
+}
+div#time{
+  position:relative;
+  height:20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+  width: 190px;
+  text-align: center;
+  font-size: 20px;
+  font-family:ヒラギノ丸ゴ ProN;
+  font-weight:bold;
+}
