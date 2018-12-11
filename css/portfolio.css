@@ -11,7 +11,7 @@ ul{
    list-style-type: none;
  }
  a {
-   text-decoration: none !important;
+   text-decoration: none ;
  }
  h1 {
    padding-top: 100px;
@@ -108,12 +108,12 @@ ul{
 
  .header-links a::after {
    display: block;
-     margin: 0 auto;
+   margin: 0 auto;
    margin-top: 5px;
    width: 0;
-     height: 2px;
-     background-color: #fff;
-     content: '';
+   height: 2px;
+   background-color: #fff;
+   content: '';
    opacity: 0;
    -webkit-transition: width 0.6s, opacity 0.8s;
    -moz-transition: width 0.6s, opacity 0.8s;
@@ -164,24 +164,279 @@ ul{
  }
 
  /*work*/
- .container{
-   padding: 1% 3% 0 5%;
- }
- .container img{
-   width: 15%;
-   float: left;
- }
- 
+ .works {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	visibility: hidden;
+	width: 100%;
+  height: 60vh;
+}
+.works .slideitem {
+	position: relative;
+	visibility: visible;
+	overflow: hidden;
+	width: 25%;
+	height: 100%;
+	cursor: pointer;
+	-webkit-transition: all 0.3s linear 0s;
+	transition: all 0.3s linear 0s;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+.works .slideitem:nth-child(1) {
+	background-image: url('../img/syodou.jpg');
+}
+.works .slideitem:nth-child(2) {
+	background-image: url('../img/rose.jpg');
+}
+.works .slideitem:nth-child(3) {
+	background-image: url('../img/kaigo.jpg');
+}
+.works .slideitem:nth-child(4) {
+	background-image: url('../img/clock.png');
+}
+.works .slideitem:after {
+	position: absolute;
+	z-index: 2;
+	top: -100%;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	content: '';
+	opacity: 0;
+	background-color: rgba(240,98,146 ,0.3);
+}
+.works:hover .slideitem:hover {
+	width: 60%;
+}
+.works:hover .slideitem:not(:hover):after {
+	top: 0;
+	visibility: visible;
+	-webkit-transition: all 0.2s linear 0s;
+	transition: all 0.2s linear 0s;
+	opacity: 1;
+}
+.works .slideitem .slidecont {
+	position: absolute;
+	z-index: 4;
+	bottom: 60px;
+	left: 30px;
+	visibility: hidden;
+	max-width: 400px;
+	padding: 20px;
+	-webkit-transform: scale(1.2);
+	        transform: scale(1.2);
+	color: #ffffff;
+	border-radius: 5px;
+	background-color: rgba(194, 24, 92, 0.808);
+}
+.works .slideitem .slidecont h2 {
+	font-size: 1.4em;
+}
+.works:hover .slideitem:hover .slidecont {
+	visibility: visible;
+	-webkit-transition: all 0.2s linear 0.3s;
+	transition: all 0.2s linear 0.3s;
+	-webkit-transform: scale(1);
+	        transform: scale(1);
+	opacity: 1;
+}
+@media only screen and (max-width:768px) {
+	.works {
+		height: 80vh;
+	}
+	.works .slideitem .slidecont h2 {
+		font-size: 0.9em;
+	}
+	.works .slideitem .slidecont p {
+		font-size: 0.7em;
+	}
+	.works .slideitem .slidecont {
+		right: 10px;
+		bottom: 10px;
+		left: 10px;
+	}
+	.works:hover .slideitem:hover .slidecont {
+		left: 10px;
+	}
+}
+.text p a{ 
+  color: #5fc07f;
+  text-decoration: underline;
+}
+.text p a:hover{
+    color:#9ec9ac;
+}
+
+/*skill*/
+/* 初期値等のリセット */
+.graph-title , .bar-graph, .bar-graph li, .bar-graph dl,
+.bar-graph dt, .bar-graph dd, .bar-graph span {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+}
+
+.bar-graph {
+  border: 1px solid #3b2b2b;
+  margin: 80px 10px;
+  background-color: #fce9e9ad;
+}
+
+.bar-graph li {
+  border-bottom: 1px solid #3b2b2b;
+}
+
+.bar-graph li:last-child {
+  border-bottom: 0;
+}
+
+/* 各グラフの横並びは flex */
+.bar-graph dl {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* グラフの項目名は固定幅 */
+.bar-graph dt {
+  border-right: 1px solid #3b2b2b;
+  color: #3b2b2b;
+  font-weight: bold;
+  flex-basis: 300px; /* 項目名の幅 */
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding: 34px 0 10px 0;
+  text-align: center;
+}
+
+/* グラフが入る要素は自由幅 */
+.bar-graph dd {
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: 30px 0;
+  text-align: center;
+}
+
+/* グラフ本体 */
+.bar-graph dd span {
+  color: #3b2b2b;
+  display: block;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+/* 各グラフの色と％、各々設定する */
+.graph-a dd span {
+  background-color: #6cd48f;
+  color: #3b2b2b;
+  width: 80%;
+  height: 150%;
+}
+
+.graph-b dd span {
+  background-color: #6fdee2;
+  width: 65%;
+  height: 150%;
+}
+
+.graph-c dd span {
+  background-color: #af95f8;
+  width: 45%;
+  height: 150%;
+}
+
+.graph-d dd span {
+  background-color: #cf8999;
+  width: 35%;
+  height: 150%;
+}
+
+
+/* レスポンシブ対応、狭いときは flex を解除 */
+@media (max-width: 860px) {
+  .bar-graph dl {
+    display: block;
+  }
+
+  .bar-graph dt {
+    border-bottom: 1px solid #3b2b2b;
+    border-right: 0;
+  }
+}
  /*goal*/
  .goal{
    color: #3b2b2b;
  }
- .big{
-   float: left;
- }
- .middle{
-  float: left;
+ .big {
+  position: relative;
+  margin: 2em 15em;
+  border: solid 3px #3b2b2b60;
+  border-radius: 10px;
 }
- .small{
-  float: left;
+.big .box {
+  position: relative;
+  display: inline-block;
+  top: -13px;
+  left: 10px;
+  line-height: 1;
+  font-size: 19px;
+  background: #cf9f9f;
+  box-shadow: 0px 0px 0px 5px #cf9f9f;
+  border: dashed 2px white;
+  padding: 0.2em 0.5em;
+  font-weight: bold;
+}
+.big ul li {
+  margin: 0; 
+  padding: 0;
+}
+.middle {
+  position: relative;
+  margin: 2em 15em;
+  border: solid 3px #3b2b2b60;
+  border-radius: 10px;
+}
+.middle .box {
+  position: relative;
+  display: inline-block;
+  top: -13px;
+  left: 10px;
+  line-height: 1;
+  font-size: 19px;
+  background: #cf9f9f;
+  box-shadow: 0px 0px 0px 5px #cf9f9f;
+  border: dashed 2px white;
+  padding: 0.2em 0.5em;
+  font-weight: bold;
+}
+.middle ul li {
+  margin: 0; 
+  padding: 0;
+}
+.small {
+  position: relative;
+  margin: 2em 15em;
+  border: solid 3px #3b2b2b60;
+  border-radius: 10px;
+}
+.small .box {
+  position: relative;
+  display: inline-block;
+  top: -13px;
+  left: 10px;
+  line-height: 1;
+  font-size: 19px;
+  background: #cf9f9f;
+  box-shadow: 0px 0px 0px 5px #cf9f9f;
+  border: dashed 2px white;
+  padding: 0.2em 0.5em;
+  font-weight: bold;
+}
+small ul li {
+  margin: 0; 
+  padding: 0;
 }
